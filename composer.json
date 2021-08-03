@@ -1,0 +1,54 @@
+{
+    "name": "mrbrownnl/random-nickname-generator",
+    "description": "Random nickname generator",
+    "keywords": [
+        "mrbrownnl",
+        "random-nickname-generator"
+    ],
+    "homepage": "https://github.com/mrbrownnl/random-nickname-generator",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Jeroen de Bruijn",
+            "email": "jeroen@alphega.nl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MrBrownNL\\RandomNicknameGenerator\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MrBrownNL\\RandomNicknameGenerator\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MrBrownNL\\RandomNicknameGenerator\\RandomNicknameGeneratorServiceProvider"
+            ],
+            "aliases": {
+                "RandomNicknameGenerator": "MrBrownNL\\RandomNicknameGenerator\\RandomNicknameGeneratorFacade"
+            }
+        }
+    }
+}
