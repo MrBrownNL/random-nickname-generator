@@ -1,10 +1,9 @@
-# Very short description of the package
+# PHP random nickname generator
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/mrbrownnl/random-nickname-generator.svg?style=flat-square)](https://packagist.org/packages/mrbrownnl/random-nickname-generator)
 [![Total Downloads](https://img.shields.io/packagist/dt/mrbrownnl/random-nickname-generator.svg?style=flat-square)](https://packagist.org/packages/mrbrownnl/random-nickname-generator)
-![GitHub Actions](https://github.com/mrbrownnl/random-nickname-generator/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Generates random nicknames based on an adjective + name + optional number.
 
 ## Installation
 
@@ -17,36 +16,21 @@ composer require mrbrownnl/random-nickname-generator
 ## Usage
 
 ```php
-// Usage description here
+<?php
+
+use MrBrownNL\RandomNicknameGenerator\RandomNicknameGenerator;
+
+require 'vendor/autoload.php';
+
+$nickNameGenerator = new RandomNicknameGenerator();
+echo $nickNameGenerator->generate();
 ```
 
-### Testing
-
-```bash
-composer test
-```
 
 ### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-### Security
-
-If you discover any security related issues, please email jeroen@alphega.nl instead of using the issue tracker.
-
-## Credits
-
--   [Jeroen de Bruijn](https://github.com/mrbrownnl)
--   [All Contributors](../../contributors)
-
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
