@@ -12,9 +12,9 @@ class RandomNicknameGenerator
 
     public function __construct()
     {
-        $this->config = include('config/config.php');
-        $this->adjectives = file('./src/dictionaries/adjectives.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        $this->names = file('./src/dictionaries/names.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $this->config = include(__DIR__ . '/../config/config.php');
+        $this->adjectives = file(__DIR__ . '/dictionaries/adjectives.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $this->names = file(__DIR__ . '/dictionaries/names.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     }
 
     final public function generate(): string
