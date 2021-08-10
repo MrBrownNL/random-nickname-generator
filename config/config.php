@@ -1,9 +1,9 @@
 <?php
 
-return (object) [
+return [
     'separator' => '',
     'addNumericPostfix' => true,
-    'postfix' => (object) [
+    'postfix' => [
         'minimumValue' => 1,
         'maximumValue' => 999,
     ],

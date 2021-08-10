@@ -10,9 +10,9 @@ class RandomNicknameGenerator
 
     private $names;
 
-    public function __construct()
+    public function __construct(array $options = [])
     {
-        $this->config = include(__DIR__ . '/../config/config.php');
+        $this->config = json_decode(json_encode(array_replace_recursive(include(__DIR__ . '/../config/config.php'), $options)));
         $this->adjectives = file(__DIR__ . '/dictionaries/adjectives.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         $this->names = file(__DIR__ . '/dictionaries/names.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     }
