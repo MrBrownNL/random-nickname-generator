@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'useAdjective' => true,
     'separator' => '',
     'addNumericPostfix' => true,
     'postfix' => [
