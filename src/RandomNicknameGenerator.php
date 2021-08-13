@@ -6,9 +6,11 @@ class RandomNicknameGenerator
 {
     private $config;
 
-    private $adjectives;
+    private $adjectives = [];
 
     private $names;
+
+    private $numberOfPossibleUniqueNicknames;
 
     public function __construct(array $options = [])
     {
@@ -20,6 +22,10 @@ class RandomNicknameGenerator
             );
         }
         $this->names = file(__DIR__ . '/dictionaries/names.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+        $this->numberOfPossibleUniqueNicknames = ($this->config->postfix->maximumValue - $this->config->postfix->minimumValue + 1) *
+            count($this->names) *
+            ($this->config->useAdjective && count($this->adjectives) > 0 ? count($this->adjectives) : 1);
     }
 
     final public function generate(): string
@@ -30,5 +36,10 @@ class RandomNicknameGenerator
             ($this->config->addNumericPostfix ? rand($this->config->postfix->minimumValue, $this->config->postfix->maximumValue) : '');
 
         return $nickName;
+    }
+
+    final public function getNumberOfPossibleUniqueNicknames(): int
+    {
+        return $this->numberOfPossibleUniqueNicknames;
     }
 }
