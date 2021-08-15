@@ -87,7 +87,7 @@ class RandomNicknameGenerator
                 $nickname = $this->generate();
             } while (in_array($nickname, $this->uniquelyGeneratedNicknames));
 
-            $this->addUniqueNicknameToList($nickname);
+            $this->storeUniquelyGeneratedNickname($nickname);
 
             return $nickname;
         }
@@ -174,7 +174,7 @@ class RandomNicknameGenerator
     /**
      * @param string $nickname
      */
-    private function addUniqueNicknameToList($nickname): void
+    private function storeUniquelyGeneratedNickname($nickname): void
     {
         $this->uniquelyGeneratedNicknames[] = $nickname;
 
