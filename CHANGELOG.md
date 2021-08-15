@@ -2,6 +2,15 @@
 
 All notable changes to `random-nickname-generator` will be documented in this file
 
+## 1.3.0 - 2021-08-15
+
+- Added function to return the number of possible unique nicknames
+- Keep track of uniquely generated nicknames
+- Added function to return a nickname that has been checked for uniqueness
+- Added function to return the number of available unique nicknames
+- Added function to clear the uniquely generated nicknames
+- Added functions to get or set custom adjectives or names
+
 ## 1.2.0 - 2021-08-10
 
 - Switch to animal names
