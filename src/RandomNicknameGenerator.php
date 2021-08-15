@@ -54,7 +54,7 @@ class RandomNicknameGenerator
     }
 
     /**
-     * Generates a non-unique random nickname
+     * Generates a random nickname without checking for uniqueness
      *
      * @return string
      */
@@ -90,7 +90,7 @@ class RandomNicknameGenerator
                 $nickname = $this->generate();
             } while (in_array($nickname, $this->uniquelyGeneratedNames));
 
-            $this->AddUniqueNicknameToList($nickname);
+            $this->addUniqueNicknameToList($nickname);
 
             return $nickname;
         }
@@ -103,10 +103,21 @@ class RandomNicknameGenerator
         return $this->numberOfPossibleUniqueNicknames;
     }
 
+    public function getNumberOfAvailableUniqueNicknames(): int
+    {
+        return $this->numberOfPossibleUniqueNicknames - count($this->uniquelyGeneratedNames);
+    }
+
+    public function clearUniqueNicknameList(): void
+    {
+        file_put_contents(__DIR__ . '/dictionaries/uniquelyGeneratedNames.txt','');
+        $this->uniquelyGeneratedNames = [];
+    }
+
     /**
      * @param string $nickname
      */
-    private function AddUniqueNicknameToList($nickname): void
+    private function addUniqueNicknameToList($nickname): void
     {
         $this->uniquelyGeneratedNames[] = $nickname;
 
