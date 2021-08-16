@@ -24,5 +24,15 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MrBrownNL\\RandomNicknameGenerator\\RandomNicknameGeneratorServiceProvider"
+            ],
+            "aliases": {
+                "NicknameGenerator": "MrBrownNL\\RandomNicknameGenerator\\Facades\\NicknameGenerator"
+            }
+        }
     }
 }
