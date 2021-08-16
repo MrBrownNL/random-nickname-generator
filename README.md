@@ -13,7 +13,7 @@ You can install the package via composer:
 composer require mrbrownnl/random-nickname-generator
 ```
 
-## Usage
+### Basic usage
 
 ```php
 <?php
@@ -22,13 +22,30 @@ use MrBrownNL\RandomNicknameGenerator\RandomNicknameGenerator;
 
 require 'vendor/autoload.php';
 
-$nickNameGenerator = new RandomNicknameGenerator(['useAdjective' => false]);
+$nickNameGenerator = RandomNicknameGenerator::getInstance(['useAdjective' => false]);
 
 echo $nickNameGenerator->generate();
 
 // or to generate a nickname that has been checked for uniqueness
 echo $nickNameGenerator->generateUnique();
 ```
+
+## Using the Laravel facade
+```bash
+php artisan vendor:publish --provider="MrBrownNL\RandomNicknameGenerator\RandomNicknameGeneratorServiceProvider"
+````
+then you can:
+
+```php 
+use MrBrownNL\RandomNicknameGenerator\RandomNicknameGenerator
+
+$nickname = NicknameGenerator::generate();
+
+// or to generate a nickname that has been checked for uniqueness
+$nickname = NicknameGenerator::generateUnique);
+```
+
+
 
 ### Default config parameters
 ```

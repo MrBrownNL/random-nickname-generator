@@ -2,6 +2,12 @@
 
 All notable changes to `random-nickname-generator` will be documented in this file
 
+## 2.0.0 - 2021-08-16
+
+- Switched to singleton class
+- Added Laravel support
+- Added functions to get or set the uniquely generated nicknames 
+
 ## 1.3.0 - 2021-08-15
 
 - Added function to return the number of possible unique nicknames
