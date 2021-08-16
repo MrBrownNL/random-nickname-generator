@@ -170,6 +170,24 @@ class RandomNicknameGenerator
         }
     }
 
+    public function getUniquelyGeneratedNicknames(): array
+    {
+        return $this->uniquelyGeneratedNicknames;
+    }
+
+    /**
+     * @param array $uniqueNicknames
+     */
+    public function setUniquelyGeneratedNicknames(array $uniqueNicknames): void
+    {
+        file_put_contents(
+            __DIR__ . '/dictionaries/uniquelyGeneratedNicknames.txt',
+            implode(PHP_EOL, $uniqueNicknames)
+        );
+
+        $this->uniquelyGeneratedNicknames = $uniqueNicknames;
+    }
+
     public function clearUniquelyGeneratedNicknames(): void
     {
         file_put_contents(__DIR__ . '/dictionaries/uniquelyGeneratedNicknames.txt','');
