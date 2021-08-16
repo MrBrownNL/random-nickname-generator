@@ -37,7 +37,7 @@ php artisan vendor:publish --provider="MrBrownNL\RandomNicknameGenerator\RandomN
 then you can:
 
 ```php 
-use MrBrownNL\RandomNicknameGenerator\RandomNicknameGenerator
+use MrBrownNL\RandomNicknameGenerator\Facades\NicknameGenerator;
 
 $nickname = NicknameGenerator::generate();
 
