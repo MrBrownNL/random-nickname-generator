@@ -182,7 +182,7 @@ class RandomNicknameGenerator
     {
         file_put_contents(
             __DIR__ . '/dictionaries/uniquelyGeneratedNicknames.txt',
-            implode(PHP_EOL, $uniqueNicknames)
+            implode(PHP_EOL, $uniqueNicknames) . PHP_EOL
         );
 
         $this->uniquelyGeneratedNicknames = $uniqueNicknames;
@@ -210,7 +210,8 @@ class RandomNicknameGenerator
 
         file_put_contents(
             __DIR__ . '/dictionaries/uniquelyGeneratedNicknames.txt',
-            implode(PHP_EOL, $this->uniquelyGeneratedNicknames)
+            $nickname . PHP_EOL,
+            FILE_APPEND
         );
     }
 }
