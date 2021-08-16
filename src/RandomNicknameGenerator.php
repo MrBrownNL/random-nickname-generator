@@ -190,8 +190,7 @@ class RandomNicknameGenerator
 
     public function clearUniquelyGeneratedNicknames(): void
     {
-        file_put_contents(__DIR__ . '/dictionaries/uniquelyGeneratedNicknames.txt','');
-        $this->uniquelyGeneratedNicknames = [];
+        $this->setUniquelyGeneratedNicknames([]);
     }
 
     private function loadAdjectives(): array

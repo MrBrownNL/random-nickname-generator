@@ -4,7 +4,6 @@ namespace MrBrownNL\RandomNicknameGenerator;
 
 use Illuminate\Support\ServiceProvider;
 use MrBrownNL\RandomNicknameGenerator\Console\GenerateNickname;
-use MrBrownNL\RandomNicknameGenerator\Facades\NicknameGenerator;
 
 class RandomNicknameGeneratorServiceProvider extends ServiceProvider
 {
