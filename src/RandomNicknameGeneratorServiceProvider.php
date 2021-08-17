@@ -29,7 +29,7 @@ class RandomNicknameGeneratorServiceProvider extends ServiceProvider
     {
         // Binds the name given in the facade
         $this->app->bind('nickname-generator', function () {
-            return RandomNicknameGenerator::getInstance(config('nickname-generator'));
+            return new RandomNicknameGenerator(config('nickname-generator'));
         });
 
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'nickname-generator');
