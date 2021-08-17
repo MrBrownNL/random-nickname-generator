@@ -28,12 +28,14 @@ class RandomNicknameGenerator
         );
 
         if ($this->config->useAdjective) {
-            $this->adjectives = $this->loadAdjectives();
+            $this->adjectives = count($this->config->dictionaries->adjectives) > 0
+                ? $this->config->dictionaries->adjectives
+                : file(__DIR__ . '/dictionaries/adjectives.txt',FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         }
 
-        $this->names = file(
-            __DIR__ . '/dictionaries/names.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES
-        );
+        $this->names = count($this->config->dictionaries->names) > 0
+            ? $this->config->dictionaries->names
+            : file(__DIR__ . '/dictionaries/names.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
         if (file_exists(__DIR__ . '/dictionaries/uniquelyGeneratedNicknames.txt')) {
             $this->uniquelyGeneratedNicknames = file(
@@ -103,58 +105,6 @@ class RandomNicknameGenerator
     public function getNumberOfAvailableUniqueNicknames(): int
     {
         return $this->numberOfPossibleUniqueNicknames - count($this->uniquelyGeneratedNicknames);
-    }
-
-    public function getAdjectives(): array
-    {
-        if ($this->config->useAdjective) {
-            return $this->adjectives;
-        }
-
-        return $this->loadAdjectives();
-    }
-
-    /**
-     * @param array $adjectives
-     * @param bool $clearUniquelyGeneratedNicknames
-     */
-    public function setAdjectives(array $adjectives, bool $clearUniquelyGeneratedNicknames = false): void
-    {
-        file_put_contents(
-            __DIR__ . '/dictionaries/adjectives.txt',
-            implode(PHP_EOL, $adjectives)
-        );
-
-        if ($this->config->useAdjective) {
-            $this->adjectives = $adjectives;
-        }
-
-        if ($clearUniquelyGeneratedNicknames) {
-            $this->clearUniquelyGeneratedNicknames();
-        }
-    }
-
-    public function getNames(): array
-    {
-        return $this->names;
-    }
-
-    /**
-     * @param array $names
-     * @param bool $clearUniquelyGeneratedNicknames
-     */
-    public function setNames(array $names, bool $clearUniquelyGeneratedNicknames = false): void
-    {
-        file_put_contents(
-            __DIR__ . '/dictionaries/names.txt',
-            implode(PHP_EOL, $names)
-        );
-
-        $this->names = $names;
-
-        if ($clearUniquelyGeneratedNicknames) {
-            $this->clearUniquelyGeneratedNicknames();
-        }
     }
 
     public function getUniquelyGeneratedNicknames(): array

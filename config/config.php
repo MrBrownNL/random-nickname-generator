@@ -8,4 +8,8 @@ return [
         'minimumValue' => 1,
         'maximumValue' => 999,
     ],
+    'dictionaries' => [
+        'adjectives' => [],
+        'names' => [],
+    ],
 ];
