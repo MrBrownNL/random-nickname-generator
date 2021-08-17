@@ -2,6 +2,12 @@
 
 All notable changes to `random-nickname-generator` will be documented in this file
 
+## 3.0.0 - 2021-08-17
+
+- Switched from singleton back to normal class
+- Moved custom dictionaries to config parameters
+- Moved uniquely generated nicknames to a function parameter instead of storing them to a file.
+
 ## 2.0.0 - 2021-08-16
 
 - Switched to singleton class

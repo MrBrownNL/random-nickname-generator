@@ -22,32 +22,51 @@ use MrBrownNL\RandomNicknameGenerator\RandomNicknameGenerator;
 
 require 'vendor/autoload.php';
 
-$nickNameGenerator = RandomNicknameGenerator::getInstance(['useAdjective' => false]);
+$nickNameGenerator = new RandomNicknameGenerator(['useAdjective' => false]);
 
 echo $nickNameGenerator->generate();
 
-// or to generate a nickname that has been checked for uniqueness
+// or generate a nickname that has been checked for uniqueness
 echo $nickNameGenerator->generateUnique();
 ```
 
 ## Using the Laravel facade
+
+If you are using Laravel 5.5 and up, the service provider will automatically get registered.
+
+For older versions of Laravel (<5.5), you have to add the service provider:
+
+####config/app.php
+```php
+'providers' => [
+    ...
+    MrBrownNL\RandomNicknameGenerator\RandomNicknameGeneratorServiceProvider::class,
+]
+```
+
+To override the default config parameters in Laravel
+you can publish the config file to ```config/nickname-generator.php``` and specify your own parameters.
 ```bash
 php artisan vendor:publish --provider="MrBrownNL\RandomNicknameGenerator\RandomNicknameGeneratorServiceProvider"
 ````
-then you can:
+
+Using the facade:
 
 ```php 
 use MrBrownNL\RandomNicknameGenerator\Facades\NicknameGenerator;
 
 $nickname = NicknameGenerator::generate();
 
-// or to generate a nickname that has been checked for uniqueness
-$nickname = NicknameGenerator::generateUnique);
+// or generate a nickname that has been checked for uniqueness
+$nickname = NicknameGenerator::generateUnique();
+```
+or test it:
+```bash
+php artisan generate-nickname
 ```
 
-
-
-### Default config parameters
+## Default config parameters
+The default package dictionaries are used when no or empty dictionaries are specified on class instantiating.
 ```
 [
     'useAdjective' => true,
@@ -56,16 +75,30 @@ $nickname = NicknameGenerator::generateUnique);
     'postfix' => [
         'minimumValue' => 1,
         'maximumValue' => 999,
-    ]
+    ],
+    'dictionaries' => [
+        'adjectives' => [],
+        'names' => [],
+    ],
 ]
 ```
 
-### Performance
+## Function reference
+
+| Function | Description |
+|:---|:---|
+| ``` generate() ``` | Generates a random nickname which is not stored in the uniquely generated nickname list or checked for uniqueness. |
+| ``` generateUnique([]) ``` | Generates a unique random nickname which is not in the given array. |
+| ``` getNumberOfPossibleUniqueNicknames() ``` | Returns the total number of possible unique nicknames with the given configuration parameters. |
+
+## Performance
 
 The table below shows how much time it takes to generate a unique name.
 
-While compiling custom adjective or name lists, keep in mind that performance drops drastically
-if only 1% or less unique nicknames are left. 
+While compiling custom adjective or name dictionaries, keep in mind that performance drops drastically
+if only 1% or less unique nicknames are left.
+
+The table below shows the performance when 150.000 unique nicknames are possible. 
 
 | Available nicknames | Time    |
 |:-------------------:|--------:|
@@ -76,10 +109,10 @@ if only 1% or less unique nicknames are left.
 | 5 %                 | 0.030 s |
 | 1 %                 | 0.060 s |
 
-### Changelog
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
-### License
+## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
