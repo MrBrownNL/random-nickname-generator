@@ -6,8 +6,6 @@ use Exception;
 
 class RandomNicknameGenerator
 {
-    private static $instance;
-
     private $config;
 
     private $adjectives = [];
@@ -18,7 +16,7 @@ class RandomNicknameGenerator
 
     private $numberOfPossibleUniqueNicknames;
 
-    private function __construct(array $options = [])
+    public function __construct(array $options = [])
     {
         $this->config = json_decode(
             json_encode(
@@ -50,17 +48,6 @@ class RandomNicknameGenerator
             ($this->config->postfix->maximumValue - $this->config->postfix->minimumValue + 1)
             * count($this->names)
             * ($this->config->useAdjective && count($this->adjectives) > 0 ? count($this->adjectives) : 1);
-    }
-
-    /**
-     * @param array $options
-     * @return RandomNicknameGenerator
-     */
-    public static function getInstance(array $options = [])
-    {
-        return !isset(self::$instance)
-            ? self::$instance = new RandomNicknameGenerator($options)
-            : self::$instance;
     }
 
     /**

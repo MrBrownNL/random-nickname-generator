@@ -6,7 +6,7 @@ require 'vendor/autoload.php';
 
 $start = microtime(true);
 
-$nickname = RandomNicknameGenerator::getInstance(["useAdjective" => false, "postfix" => ["maximumValue" => 999]]);
+$nickname = new RandomNicknameGenerator(["useAdjective" => false, "postfix" => ["maximumValue" => 999]]);
 
 echo "Possible unique nicknames: " . $nickname->getNumberOfPossibleUniqueNicknames() . PHP_EOL;
 echo "Available unique nicknames: " . $nickname->getNumberOfAvailableUniqueNicknames() . PHP_EOL;
